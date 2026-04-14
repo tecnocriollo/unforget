@@ -1,0 +1,6 @@
+{
+  "name": "unforget",
+  "description": "Writes project context and last-session resume into AI assistant instruction files so every assistant starts with full context",
+  "version": "1.0.0",
+  "contextFileName": "GEMINI.md"
+}
