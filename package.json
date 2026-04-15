@@ -1,0 +1,21 @@
+{
+  "name": "install-unforget",
+  "version": "1.0.0",
+  "description": "Installer for the unforget AI assistant skill",
+  "bin": {
+    "install-unforget": "./bin/install.js"
+  },
+  "scripts": {
+    "test": "node --test test/installer.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["unforget", "skill", "ai", "assistant"],
+  "author": "tecnocriollo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tecnocriollo/unforget"
+  }
+}
