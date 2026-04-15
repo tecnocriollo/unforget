@@ -20,59 +20,24 @@ Target files updated:
 
 ## Installation
 
-### Claude Code
+```bash
+npx install-unforget
+```
 
-Clone manually into your global skills directory:
+The installer detects which AI assistants are available on your machine and prompts you to confirm which ones to set up. To install for all assistants without prompting:
+
+```bash
+npx install-unforget --all
+```
+
+> **Windows note:** Symlinking directories requires Developer Mode to be enabled (Settings → For developers → Developer Mode).
+
+Until published to the npm registry, clone the repo and run directly:
 
 ```bash
 git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
+node ~/.claude/skills/unforget/bin/install.js
 ```
-
-### Gemini CLI
-
-```bash
-gemini extensions install https://github.com/tecnocriollo/unforget
-```
-
-To update later:
-
-```bash
-gemini extensions update unforget
-```
-
-### Codex
-
-See [`.codex/INSTALL.md`](.codex/INSTALL.md) for full steps. Short version:
-
-```bash
-git clone https://github.com/tecnocriollo/unforget ~/.codex/unforget
-mkdir -p ~/.codex/skills
-ln -sf ~/.codex/unforget ~/.codex/skills/unforget
-```
-
-Restart Codex to discover the skill.
-
-### OpenCode
-
-Add to your `opencode.json`:
-
-```json
-{
-  "plugin": ["unforget@git+https://github.com/tecnocriollo/unforget.git"]
-}
-```
-
-Restart OpenCode — the plugin auto-installs and registers the skill. See [`.opencode/INSTALL.md`](.opencode/INSTALL.md) for details.
-
-### All assistants at once
-
-After cloning to `~/.claude/skills/unforget`, run the install script:
-
-```bash
-~/.claude/skills/unforget/install.sh
-```
-
-This symlinks the skill for Claude Code, Gemini CLI, Codex, and Copilot CLI in one step.
 
 ---
 
