@@ -1,7 +1,7 @@
 ---
 name: unforget
 description: Use when you want to generate or refresh AI assistant context files (CLAUDE.md, copilot-instructions.md, GEMINI.md, AGENTS.md) from a project's docs/ folder and the current conversation, so every assistant starts with full project context and a last-session resume.
-trigger: /unforget
+trigger: /unforget [--all]
 ---
 
 # /unforget
@@ -37,7 +37,7 @@ Read every `.md` file in `docs/`, synthesize project context, **and distill the 
    - Any preferences or constraints the user expressed
    Keep it under 10 bullet points. Skip trivial back-and-forth. Only include what a future assistant needs to hit the ground running.
 
-4. **Write instruction files** — for each target, either create it fresh or surgically update only the `<!-- unforget -->…<!-- /unforget -->` block. Never touch content outside that block.
+4. **Write instruction files** — before writing each target file, check whether the corresponding symlink exists under the assistant's skills directory (e.g. `~/.claude/skills/unforget`, `~/.gemini/skills/unforget`). Skip any target whose symlink is absent — that assistant was not selected during install. If `/unforget` is invoked with `--all`, skip the symlink check and write all four files regardless. For each file that passes the check, either create it fresh or surgically update only the `<!-- unforget -->…<!-- /unforget -->` block. Never touch content outside that block.
 
 5. **Reference source docs** — if docs were found, include a `## Docs` section listing each file read.
 
