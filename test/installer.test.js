@@ -34,3 +34,26 @@ test('isInPath finds node (always present in Node environment)', () => {
 test('isInPath returns false for nonexistent binary', () => {
   assert.equal(isInPath('__nonexistent_binary_xyz__'), false);
 });
+
+const { parseSelection } = require('../lib/installer');
+
+test('parseSelection: empty input returns detected indices', () => {
+  const detected = [0, 1];
+  assert.deepEqual(parseSelection('', detected, 4), [0, 1]);
+});
+
+test('parseSelection: "all" returns all indices', () => {
+  assert.deepEqual(parseSelection('all', [0], 4), [0, 1, 2, 3]);
+});
+
+test('parseSelection: space-separated numbers returns those indices (1-based)', () => {
+  assert.deepEqual(parseSelection('1 3', [], 4), [0, 2]);
+});
+
+test('parseSelection: ignores out-of-range numbers', () => {
+  assert.deepEqual(parseSelection('0 5 2', [], 4), [1]);
+});
+
+test('parseSelection: trims whitespace', () => {
+  assert.deepEqual(parseSelection('  2  ', [], 4), [1]);
+});
