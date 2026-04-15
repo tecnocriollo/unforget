@@ -22,12 +22,7 @@ Target files updated:
 
 ### Claude Code
 
-```bash
-/plugin marketplace add tecnocriollo/unforget
-/plugin install unforget@unforget
-```
-
-Or clone manually into your global skills directory:
+Clone manually into your global skills directory:
 
 ```bash
 git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
