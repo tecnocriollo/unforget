@@ -126,12 +126,6 @@ Full documentation lives in `docs/`. Key files:
 ## Updating
 
 ```bash
-/plugin update unforget
-```
-
-Or if installed manually:
-
-```bash
 cd ~/.claude/skills/unforget && git pull
 ```
 
