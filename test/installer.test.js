@@ -57,3 +57,53 @@ test('parseSelection: ignores out-of-range numbers', () => {
 test('parseSelection: trims whitespace', () => {
   assert.deepEqual(parseSelection('  2  ', [], 4), [1]);
 });
+
+const { linkSkill } = require('../lib/installer');
+const fs = require('fs');
+
+test('linkSkill creates symlink in target dir', () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-test-'));
+  const fakeSkillDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-src-'));
+  const assistant = {
+    name: 'Test',
+    bin: 'test',
+    configDir: '~/.test',
+    skillDir: tmpDir,
+  };
+
+  const result = linkSkill(assistant, fakeSkillDir);
+  assert.equal(result, 'linked');
+  const linkPath = path.join(tmpDir, 'unforget');
+  assert.ok(fs.existsSync(linkPath));
+
+  fs.rmSync(tmpDir, { recursive: true });
+  fs.rmSync(fakeSkillDir, { recursive: true });
+});
+
+test('linkSkill returns "already linked" when symlink already points to skillDir', () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-test-'));
+  const fakeSkillDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-src-'));
+  const assistant = { name: 'Test', bin: 'test', configDir: '~/.test', skillDir: tmpDir };
+
+  linkSkill(assistant, fakeSkillDir); // first call creates it
+  const result = linkSkill(assistant, fakeSkillDir); // second call should detect it
+  assert.equal(result, 'already linked');
+
+  fs.rmSync(tmpDir, { recursive: true });
+  fs.rmSync(fakeSkillDir, { recursive: true });
+});
+
+test('linkSkill returns "skipped" when path exists but is not the right symlink', () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-test-'));
+  const fakeSkillDir = fs.mkdtempSync(path.join(os.tmpdir(), 'unforget-src-'));
+  const assistant = { name: 'Test', bin: 'test', configDir: '~/.test', skillDir: tmpDir };
+
+  const linkPath = path.join(tmpDir, 'unforget');
+  fs.mkdirSync(linkPath); // plain directory, not a symlink
+
+  const result = linkSkill(assistant, fakeSkillDir);
+  assert.equal(result, 'skipped');
+
+  fs.rmSync(tmpDir, { recursive: true });
+  fs.rmSync(fakeSkillDir, { recursive: true });
+});
