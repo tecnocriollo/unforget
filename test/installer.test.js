@@ -107,3 +107,7 @@ test('linkSkill returns "skipped" when path exists but is not the right symlink'
   fs.rmSync(tmpDir, { recursive: true });
   fs.rmSync(fakeSkillDir, { recursive: true });
 });
+
+test('parseSelection: deduplicates repeated numbers', () => {
+  assert.deepEqual(parseSelection('1 1 2', [], 4), [0, 1]);
+});

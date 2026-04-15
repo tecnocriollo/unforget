@@ -99,21 +99,19 @@ The skill uses standard file tools. On each platform, use the native equivalent:
 
 ## Installation
 
-The skill lives in `~/.claude/skills/unforget/`. Run the install script to symlink it into every assistant's skills directory:
-
 ```bash
-~/.claude/skills/unforget/install.sh
+npx install-unforget
 ```
 
-Or install manually:
+To install for all assistants without prompting:
 
 ```bash
-# Gemini CLI
-ln -sf ~/.claude/skills/unforget ~/.gemini/skills/unforget
+npx install-unforget --all
+```
 
-# Codex
-ln -sf ~/.claude/skills/unforget ~/.codex/skills/unforget
+Until published to npm, clone and run directly:
 
-# Copilot CLI / generic agents
-ln -sf ~/.claude/skills/unforget ~/.agents/skills/unforget
+```bash
+git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
+node ~/.claude/skills/unforget/bin/install.js
 ```
