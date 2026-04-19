@@ -15,6 +15,7 @@ Target files updated:
 | GitHub Copilot | `.github/copilot-instructions.md` |
 | Gemini CLI | `GEMINI.md` |
 | Codex / OpenAI | `AGENTS.md` |
+| OpenCode | `~/.opencode/plugins/unforget/unforget/SKILL.md` |
 
 ---
 
@@ -38,6 +39,18 @@ Until published to the npm registry, clone the repo and run directly:
 git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
 node ~/.claude/skills/unforget/bin/install.js
 ```
+
+### OpenCode
+
+The plugin auto-installs via the npm installer after cloning, or manually:
+
+```bash
+git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
+mkdir -p ~/.opencode/plugins
+ln -sf ~/.claude/skills/unforget ~/.opencode/plugins/unforget
+```
+
+Restart OpenCode to discover the plugin.
 
 ---
 
