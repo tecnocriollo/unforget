@@ -1,0 +1,15 @@
+{
+  "name": "unforget",
+  "version": "1.0.0",
+  "type": "skill",
+  "description": "Generate AI assistant context files from project docs + session history",
+  "author": "tecnocriollo",
+  "repository": "https://github.com/tecnocriollo/unforget",
+  "entry": "unforget/SKILL.md",
+  "instructions": [
+    {
+      "trigger": "/unforget",
+      "skill": "unforget/SKILL.md"
+    }
+  ]
+}
