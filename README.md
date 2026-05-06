@@ -21,23 +21,16 @@ Target files updated:
 
 ## Installation
 
-```bash
-npx install-unforget
-```
-
-The installer detects which AI assistants are available on your machine and prompts you to confirm which ones to set up. To install for all assistants without prompting:
-
-```bash
-npx install-unforget --all
-```
-
-> **Windows note:** Symlinking directories requires Developer Mode to be enabled (Settings → For developers → Developer Mode).
-
-Until published to the npm registry, clone the repo and run directly:
+### Claude Code
 
 ```bash
 git clone https://github.com/tecnocriollo/unforget ~/.claude/skills/unforget
-node ~/.claude/skills/unforget/bin/install.js
+```
+
+Then in any Claude Code session:
+
+```
+/unforget
 ```
 
 ### OpenCode
